@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+body{
+    font-family: "Press start 2p", system-ui;
+    background-color: #2fb4e4;
+}
+.btn.btn-comenzar {
+    font-family: "Press start 2p", system-ui;
+    background-color: aquamarine;
+    display: flex;
+    margin-top: 0rem;
+    margin-left: 0rem;
+    font-size: 200px;
+    position: absolute; 
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+.img_whackamole {
+    width: 100%;
+    height: 100vh;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
