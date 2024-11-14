@@ -6,11 +6,9 @@
     box-sizing: 0;
 }
 body{
-    font-family: "Press start 2p", system-ui;
     background-color: #2fb4e4;
 }
 .botonEmpezar {
-    font-family: "Press start 2p", system-ui;
     background-color: #2fb4e4;
     display: flex;
     margin-top: 0rem;
@@ -22,11 +20,30 @@ body{
     transform: translate(-50%, -50%);
     z-index: 1;
 }
-.img_whackamole {
+.nubes_fondo {
     width: 100%;
     height: 100vh;
     position: fixed; 
     top: 0;
     left: 0;
     z-index: -1;
+}
+.boton{
+    font-family: "Press start 2p", system-ui;
+    background-color: #2fb4e4;
+    display: flex;
+    font-size: x-large;
+    margin-top: 5rem;
+    margin-left:  45%;
+}
+
+.texto_dificultad{ 
+    font-family:"Press start 2p", system-ui;
+    margin-top: 5%;
+    margin-left: 25%;
+}
+.puntaje{
+    margin-top: 0%;
+    margin-left: 25%;
+
 }
