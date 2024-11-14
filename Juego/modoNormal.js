@@ -15,7 +15,7 @@ function setGame() {
         let tile = document.createElement("div");
         tile.id = i.toString();
         tile.addEventListener("click", selectTile);
-        document.getElementById("board").appendChild(tile);
+        document.getElementsByClassName("Score Board").appendChild(tile);
     }
     setInterval(setMole, moleInterval); // Los topos aparecerán cada 700ms
 }
@@ -52,7 +52,7 @@ function hitMole(event) {
     let mole = event.target;
     mole.src = "./moleAuch.png"; // Imagen del topo golpeado
     score += 3;
-    document.getElementById("score").innerText = score.toString();
+    document.getElementsByClassName("score-board").innerText = score.toString();
 
     let tile = mole.parentElement;
     currMoleTiles = currMoleTiles.filter(t => t !== tile);
@@ -69,11 +69,11 @@ function startTimer() {
         if (timeLeft <= 0) {
             gameOver = true;
             document.getElementById("gameOverMessage").style.display = "block";
-            document.getElementById("score").innerText = "Final Score: " + score;
+            document.getElementsByClassName("score-board").innerText = "Final Score: " + score;
             clearInterval(timerInterval);
         } else {
             timeLeft -= 1;
-            document.getElementById("timer").innerText = timeLeft + "s";
+            document.getElementsByClassName("timer-container").innerText = timeLeft + "s";
         }
     }, 1000);
 }
