@@ -1,7 +1,5 @@
 document.getElementById(botonEmpezar).onclick = function(){
-    document.getElementById("botonFacil").style.display="block";
-    document.getElementById("botonNormal").style.display="block";
-    document.getElementById("botonDificil").style.display="block";
+    document.getElementById("letreroIncio").style.display="block";
 }
 //función que carga los scripts correspondientes al nivel de dificultad seleccionado
 function cargarModo(scriptPath) {

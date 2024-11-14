@@ -30,7 +30,7 @@ body{
 }
 .boton{
     font-family: "Press start 2p", system-ui;
-    background-color: #2fb4e4;
+    background-color: #2fb4e400;
     display: flex;
     font-size: x-large;
     margin-top: 5rem;
