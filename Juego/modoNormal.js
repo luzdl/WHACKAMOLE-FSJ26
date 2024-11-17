@@ -1,3 +1,5 @@
+import { showGameOverScreen } from "../Menu/highScoresController";
+
 let currMoleTiles = []; // Array para manejar múltiples topos
 let score = 0;
 let gameOver = false;
@@ -5,7 +7,7 @@ let timeLeft = 20; // Tiempo de 20 segundos para nivel intermedio
 let moleInterval = 700; // Intervalo de 700ms para los topos
 let maxMoles = 2; // Hasta 2 topos simultáneos
 
-window.onload = function() {
+export function initializeModoNormal() {
     setGame();
     startTimer();
 }
@@ -65,12 +67,12 @@ function startTimer() {
             clearInterval(timerInterval);
             return;
         }
-
         if (timeLeft <= 0) {
             gameOver = true;
             document.getElementById("gameOverMessage").style.display = "block";
             document.getElementById("score").innerText = "Final Score: " + score;
             clearInterval(timerInterval);
+            showGameOverScreen(score);
         } else {
             timeLeft -= 1;
             document.getElementById("timer").innerText = timeLeft + "s";

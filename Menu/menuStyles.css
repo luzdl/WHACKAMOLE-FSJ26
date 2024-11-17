@@ -5,9 +5,11 @@
     padding: 0;
     box-sizing: 0;
 }
+
 body{
     background-color: #2fb4e4;
 }
+
 .botonEmpezar {
     background-color: #2fb4e4;
     display: flex;
@@ -28,6 +30,11 @@ body{
     left: 0;
     z-index: -1;
 }
+
+#letreroInicio {
+    display: none;
+}
+
 .boton{
     font-family: "Press start 2p", system-ui;
     background-color: #2fb4e400;

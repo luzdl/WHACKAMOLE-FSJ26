@@ -1,35 +1,35 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <link rel="stylesheet" href="./menuStyles.css">
-  <meta name="viewport"
-  content="width=device-width, initial-scale=1.0">
-  <title>WHACKAMOLE</title>
+  <script src="../main.js" type="module"></script>
 </head>
 <body>
-  <header>
-    <!-- <button
-    class="botonEmpezar" id="botonEmpezar">COMENZAR JUEGO</button> -->
-  </header>
   <main>
+    <button class="botonEmpezar" id="botonEmpezar">COMENZAR JUEGO</button> 
+    <div id="scoresDiv">
+      <h3>Highscores</h3>
+      <ul id="highScoresList"></ul>
+    </div>
+
     <div class="container-fluid">
       <img src="https://res.cloudinary.com/dbjqaml5y/image/upload/v1731484581/Group_4_yhpxll.png" alt="nubes_fondo" class="nubes_fondo"> 
       
-      <div class="container-fluid">
-        <div class="flex-container">
-          <div class="titulo">
-            <h1 class="texto_dificultad id="texto_dificultad">Elige la dificultad</h1>
-          </div>
-          <div class="buttons" id="letreroInicio">
-            <img src="assets/img/letrero.png">
-            <button class="boton" id="botonFacil">Facil</button>
+      <div class="container-fluid flex-container" id="letreroInicio">
+        <h1 class="texto_dificultad" id="texto_dificultad">Elige la dificultad</h1>
+        <div>
+          <img src="../Juego/assets/img/letreroScore.png" alt="Score">
+          <div class="botonesMenu">
+            <button class="boton" id="botonFacil">Fácil</button>
             <button class="boton" id="botonNormal">Normal</button>
-            <button class="boton" id="botonDificil">Dificil</button>
+            <button class="boton" id="botonDificil">Difícil</button>
           </div>
         </div>
-
       </div>
-    </main>
-  </body>
+      
+    </main> 
+</body>
 </html>
-

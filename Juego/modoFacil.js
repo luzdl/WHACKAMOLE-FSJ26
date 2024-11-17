@@ -1,3 +1,5 @@
+import { showGameOverScreen } from "../Menu/highScoresController";
+
 let currMoleTiles = []; // Array para manejar múltiples topos
 let score = 0;
 let gameOver = false;
@@ -5,7 +7,7 @@ let timeLeft = 30; // Tiempo de 30 segundos para nivel fácil
 let moleInterval = 1000; // Intervalo de 1000ms para los topos
 let maxMoles = 1; // Solo 1 topo a la vez
 
-window.onload = function() {
+export function initializeModoFacil() {
     setGame();
     startTimer();
 }
@@ -62,15 +64,15 @@ function hitMole(event) {
 function startTimer() {
     let timerInterval = setInterval(function() {
         if (gameOver) {
-            clearInterval(timerInterval); 
+            clearInterval(timerInterval);
             return;
         }
-
         if (timeLeft <= 0) {
             gameOver = true;
             document.getElementById("gameOverMessage").style.display = "block";
             document.getElementById("score").innerText = "Final Score: " + score;
             clearInterval(timerInterval);
+            showGameOverScreen(score);
         } else {
             timeLeft -= 1;
             document.getElementById("timer").innerText = timeLeft + "s";
