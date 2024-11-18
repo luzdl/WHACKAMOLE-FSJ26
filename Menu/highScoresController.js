@@ -1,4 +1,4 @@
-import { highscores } from "../main";
+import { highscores } from "../main.js";
 
 document.addEventListener("DOMContentLoaded", function() {
     const storedScores = JSON.parse(localStorage.getItem("highscores")) || [];

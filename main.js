@@ -1,7 +1,7 @@
-import { initializeModoDificil } from "./game/modoDificil.js";
-import { initializeModoFacil } from "./game/modoFacil.js";
-import { initializeModoNormal } from "./game/modoNormal.js";
-import { updateHighscoresDisplay } from "./highScoresController.js";
+import { initializeModoDificil } from "./Juego/modoDificil.js";
+import { initializeModoFacil } from "./Juego/modoFacil.js";
+import { initializeModoNormal } from "./Juego/modoNormal.js";
+import { updateHighscoresDisplay } from "./Menu/highScoresController.js";
 
 
 export let highscores = [];
@@ -15,6 +15,8 @@ document.getElementById("botonEmpezar").addEventListener("click", function() {
     console.log("click uwu")
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+
 document.getElementById("botonFacil").onclick = function() {
     initializeModoFacil();
 };
@@ -26,3 +28,5 @@ document.getElementById("botonNormal").onclick = function() {
 document.getElementById("botonDificil").onclick = function() {
     initializeModoDificil(); 
 };
+
+});

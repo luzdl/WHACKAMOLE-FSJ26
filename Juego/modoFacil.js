@@ -1,4 +1,4 @@
-import { showGameOverScreen } from "../Menu/highScoresController";
+import { showGameOverScreen } from "../Menu/highScoresController.js";
 
 let currMoleTiles = []; // Array para manejar múltiples topos
 let score = 0;
