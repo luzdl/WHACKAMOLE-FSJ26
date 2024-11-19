@@ -12,6 +12,7 @@ body{
 
 .botonEmpezar {
     background-color: #2fb4e4;
+    font-family:"Press start 2p", system-ui;
     display: flex;
     margin-top: 0rem;
     margin-left: 0rem;

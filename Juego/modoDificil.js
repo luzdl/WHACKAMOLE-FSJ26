@@ -45,7 +45,14 @@ function setMole() {
 }
 
 function selectTile() {
-    if (gameOver) return;
+    if (gameOver) {
+        return;
+    }
+
+    if (this == currMoleTiles) {
+        score += 10;
+        document.getElementById("score").innerText = score.toString(); //update score html
+    }
 }
 
 function hitMole(event) {
