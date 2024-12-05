@@ -1,3 +1,4 @@
+/*
 import { highscores } from "../main.js";
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -45,3 +46,4 @@ export function showGameOverScreen(score) {
     // Actualiza la lista de highscores en el div de Game Over
     updateHighscoresDisplay();
 }
+*/
