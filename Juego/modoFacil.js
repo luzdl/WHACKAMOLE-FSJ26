@@ -1,27 +1,33 @@
 //import { showGameOverScreen } from "../Menu/highScoresController.js";
 
-let currMoleTiles = []; // Array para manejar múltiples topos
+let currMoleTiles = [];
 let score = 0;
 let gameOver = false;
-let timeLeft = 30; // Tiempo de 30 segundos para nivel fácil
-let moleInterval = 1000; // Intervalo de 1000ms para los topos
-let maxMoles = 1; // Solo 1 topo a la vez
+let timeLeft = 30;
+let moleInterval = 1000;
+let maxMoles = 1;
 
 export function initializeModoFacil() {
+    localStorage.setItem('gameMode', 'facil');
     window.location.href = "game.html";
+}
+
+export function startEasyMode() {
     setGame();
     startTimer();
-    console.log("basta");
 }
 
 function setGame() {
-    for (let i = 0; i < 9; i++){
+    const board = document.getElementById("board");
+    if (!board) return;
+
+    for (let i = 0; i < 9; i++) {
         let tile = document.createElement("div");
         tile.id = i.toString();
         tile.addEventListener("click", selectTile);
-        document.getElementById("board").appendChild(tile);
+        board.appendChild(tile);
     }
-    setInterval(setMole, moleInterval); // Los topos aparecerán cada 1000ms
+    setInterval(setMole, moleInterval);
 }
 
 function getRandomTile() {

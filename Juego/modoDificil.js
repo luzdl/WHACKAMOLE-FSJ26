@@ -8,20 +8,26 @@ let moleInterval = 300; // Intervalo de 300ms para los topos
 let maxMoles = 3; // Hasta 3 topos simultáneos
 
 export function initializeModoDificil() {
+    localStorage.setItem('gameMode', 'dificil');
     window.location.href = "game.html";
+}
+
+export function startHardMode() {
     setGame();
     startTimer();
-    console.log("basta");
 }
 
 function setGame() {
-    for (let i = 0; i < 9; i++){
+    const board = document.getElementById("board");
+    if (!board) return;
+
+    for (let i = 0; i < 9; i++) {
         let tile = document.createElement("div");
         tile.id = i.toString();
         tile.addEventListener("click", selectTile);
-        document.getElementById("board").appendChild(tile);
+        board.appendChild(tile);
     }
-    setInterval(setMole, moleInterval); // Los topos aparecerán cada 300ms
+    setInterval(setMole, moleInterval);
 }
 
 function getRandomTile() {
