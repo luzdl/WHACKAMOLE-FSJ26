@@ -30,6 +30,6 @@ export function updateHighScoresDisplay() {
 
     const scores = loadHighScores();
     highScoresList.innerHTML = scores
-        .map((score, index) => `<li>${index + 1}. ${score}</li>`)
+        .map((score, index) => `<li>${index + 1}. ${score} points</li>`)
         .join('');
 }

@@ -1,3 +1,4 @@
+// Game configuration constants
 export const GAME_MODES = {
     EASY: {
         name: 'facil',
@@ -24,3 +25,15 @@ export const GAME_MODES = {
 
 export const BOARD_SIZE = 9;
 export const MOLE_APPEAR_TIME = 1000;
+
+// Asset paths
+export const ASSETS = {
+    MOLE_UP: '../assets/img/moleUp.png',
+    MOLE_DOWN: '../assets/img/moleDown.png',
+    MOLE_HIT: '../assets/img/moleAuch.png',
+    BACKGROUND: '../assets/img/fondo.jpg',
+    HILL: '../assets/img/loma.png',
+    TITLE: '../assets/img/titulo.png',
+    SCORE_BOARD: '../assets/img/letrero.png',
+    FLAG: '../assets/img/bandera.png'
+};

@@ -1,7 +1,7 @@
-import { GAME_MODES } from '../Juego/config.js';
+import { GAME_MODES } from './config.js';
 import { loadHighScores, updateHighScoresDisplay } from './scoreManager.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+function initializeMenu() {
     const startButton = document.getElementById('botonEmpezar');
     const difficultySection = document.getElementById('letreroInicio');
     
@@ -14,17 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize difficulty buttons
     const difficultyButtons = {
-        'EASY': 'botonFacil',
-        'NORMAL': 'botonNormal',
-        'HARD': 'botonDificil'
+        'EASY': document.getElementById('botonFacil'),
+        'NORMAL': document.getElementById('botonNormal'),
+        'HARD': document.getElementById('botonDificil')
     };
 
-    Object.entries(difficultyButtons).forEach(([mode, buttonId]) => {
-        const button = document.getElementById(buttonId);
+    Object.entries(difficultyButtons).forEach(([mode, button]) => {
         if (button) {
             button.addEventListener('click', () => {
                 const gameMode = GAME_MODES[mode].name;
-                console.log('Starting game with mode:', gameMode); // Debug log
                 localStorage.setItem('gameMode', gameMode);
                 window.location.href = 'game.html';
             });
@@ -34,4 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load and display high scores
     loadHighScores();
     updateHighScoresDisplay();
-});
+}
+
+// Initialize menu when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeMenu);
