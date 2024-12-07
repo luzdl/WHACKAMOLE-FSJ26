@@ -1,7 +1,7 @@
 body {
     font-family: "VT323";
     text-align: center;
-    background: url('img/fondo.jpg');
+    background: url('../assets/img/fondo.jpg');
     background-size: cover;
     background-position: center;
     margin: 0;
@@ -10,13 +10,20 @@ body {
     flex-direction: column;
     align-items: center;
 }
-body img{
-    align-items: center;
-    width:550px;
+
+#gameTitle {
+    width: 550px;
     height: 70px;
     margin-top: 20px;
 }
-/* Contenedor de la puntuación */
+
+.game-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
 .score-container {
     position: relative;
     display: inline-block;
@@ -25,12 +32,12 @@ body img{
     text-align: center;
 }
 
-.score-container img{
+.score-container img {
     height: 30%;
 }
 
 .score-board {
-    width: 200px; 
+    width: 200px;
 }
 
 #score {
@@ -42,13 +49,13 @@ body img{
     color: #fff;
 }
 
-/* Bandera de High Score */
 .high-score {
     display: flex;
     align-items: center;
     font-size: 1.5em;
     color: #333;
     gap: 10px;
+    justify-content: center;
 }
 
 .high-score img {
@@ -57,12 +64,10 @@ body img{
     padding-bottom: 25px;
 }
 
-/* Tablero de juego */
 #board {
     width: 100%;
     min-height: 400px;
     height: 464px;
-    background: url('img/loma.png') no-repeat center bottom;
     background-size: cover;
     display: flex;
     flex-wrap: wrap;
@@ -71,52 +76,71 @@ body img{
     margin-top: 20px;
     position: relative;
     bottom: 0px;
-    padding-bottom: 50px; 
+    padding-bottom: 50px;
 }
 
-/* Huecos de los topos */
-#board div {
+.tile {
     width: 30%;
     height: 30%;
-    background-image: url("img/moleDown.png");
     background-size: cover;
     background-position: center;
     margin: 5px;
+    position: relative;
 }
 
-/* Botón de pausa */
-.pausa {
-    position: absolute;
-    bottom: 30px;
+.mole {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+#timer {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+}
+
+#gameOverMessage {
+    position: fixed;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    border-radius: 25px;
-    height: 40px;
-    width: 150px;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    z-index: 1000;
+}
+
+#gameOverMessage button {
+    font-family: "VT323";
+    font-size: 1.2rem;
     background: #A02020;
     color: #D8B3B3;
-    font-size: 1.8rem;
-    font-family: "VT323";
     border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin: 10px;
     cursor: pointer;
-    margin-top: 20px;
     transition: background 0.3s ease;
 }
 
-.pausa:hover {
+#gameOverMessage button:hover {
     background: #e45050;
     color: #fee9e9;
 }
 
-/* Responsivo para pantallas pequeñas */
 @media (max-width: 600px) {
-    .score-container {
-        width: 80%;
-    }
-
-    body img {
+    #gameTitle {
         width: 90%;
         height: auto;
+    }
+
+    .score-container {
+        width: 80%;
     }
 
     #score {
@@ -125,30 +149,26 @@ body img{
 
     #board {
         height: 100vh;
-        width: 100vw;
-        background-size: cover;
         padding-bottom: 30px;
     }
 
-    #board div {
+    .tile {
         width: 28%;
-        aspect-ratio: 1;
     }
 
-    .pausa {
+    #pauseButton {
         width: 80px;
         font-size: 1rem;
     }
 }
 
-/* Responsivo para pantallas medianas */
 @media (min-width: 601px) and (max-width: 1024px) {
-    .score-container {
-        width: 80%;
+    #gameTitle {
+        max-width: 80%;
     }
 
-    body img {
-        max-width: 80%;
+    .score-container {
+        width: 80%;
     }
 
     #score {
@@ -157,31 +177,22 @@ body img{
 
     #board {
         height: 72.4vh;
-        width: 100%;
-        background-size: cover;
         padding-bottom: 40px;
     }
 
-    #board div {
+    .tile {
         width: 25%;
-        aspect-ratio: 1;
     }
 
-    .pausa {
+    #pauseButton {
         width: 120px;
         font-size: 1.5rem;
     }
 }
 
-/* Responsivo para pantallas grandes */
 @media (min-width: 1025px) {
     .score-container {
         width: 20%;
-    }
-
-    body img {
-        width: 550px;
-        height: auto;
     }
 
     #score {
@@ -189,17 +200,14 @@ body img{
     }
 
     #board {
-        width: 100%;
         margin-top: 34px;
-        background-size: cover;
     }
 
-    #board div {
+    .tile {
         width: 20%;
-        aspect-ratio: 1;
     }
 
-    .pausa {
+    #pauseButton {
         width: 150px;
         font-size: 1.8rem;
     }
