@@ -16,22 +16,25 @@
             <h2 id="score">0</h2>
         </div>
 
-        <div class="high-score">
-            <img src="./assets/img/bandera.png" alt="High Score Flag">
-            <p>High Score: <span id="highScore">0</span></p>
+        <div class="stats-container">
+            <div class="high-score">
+                <img src="./assets/img/bandera.png" alt="High Score Flag">
+                <p>High Score: <span id="highScore">0</span></p>
+            </div>
+            <div id="timer">30s</div>
         </div>
 
-        <div id="board"></div>
+        <div class="board-container">
+            <div id="board"></div>
+            <div class="hill-background"></div>
+        </div>
 
-        <div id="timer">30s</div>
         <div id="gameOverMessage" style="display: none;">
             <h2>¡Juego Terminado!</h2>
             <p>Puntaje Final: <span id="finalScore">0</span></p>
             <button id="playAgain">Jugar de Nuevo</button>
             <button id="backToMenu">Menú Principal</button>
         </div>
-
-        
     </div>
 
     <script type="module" src="./js/game.js"></script>

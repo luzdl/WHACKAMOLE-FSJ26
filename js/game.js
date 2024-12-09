@@ -4,19 +4,21 @@ import { saveScore, getHighScore } from './scoreManager.js';
 
 function createBoard() {
     const board = document.getElementById('board');
-    if (!board) {
-        console.error('Game board not found');
-        return;
-    }
+    if (!board) return;
     
     board.innerHTML = '';
-    board.style.backgroundImage = `url(${ASSETS.HILL})`;
     
     for (let i = 0; i < BOARD_SIZE; i++) {
         const tile = document.createElement('div');
         tile.className = 'tile';
         tile.dataset.index = i;
-        tile.style.backgroundImage = `url(${ASSETS.MOLE_DOWN})`;
+        
+        const moleDown = document.createElement('img');
+        moleDown.src = ASSETS.MOLE_DOWN;
+        moleDown.alt = 'Mole hole';
+        moleDown.className = 'mole-down';
+        tile.appendChild(moleDown);
+        
         board.appendChild(tile);
     }
 }
@@ -25,15 +27,16 @@ function createMole() {
     if (gameState.gameOver || gameState.paused || 
         gameState.currentMoles.length >= gameState.config.maxMoles) return;
 
-    const emptyTiles = [...document.getElementsByClassName('tile')]
-        .filter(tile => !tile.hasChildNodes());
+    const tiles = [...document.getElementsByClassName('tile')];
+    const emptyTiles = tiles.filter(tile => !tile.querySelector('.mole-up'));
     
     if (emptyTiles.length === 0) return;
 
     const randomTile = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
     const mole = document.createElement('img');
     mole.src = ASSETS.MOLE_UP;
-    mole.className = 'mole';
+    mole.alt = 'Mole';
+    mole.className = 'mole-up';
     mole.addEventListener('click', hitMole);
 
     randomTile.appendChild(mole);
@@ -54,6 +57,7 @@ function hitMole(event) {
     const tile = mole.parentNode;
     
     mole.src = ASSETS.MOLE_HIT;
+    mole.style.pointerEvents = 'none';
     gameState.score += gameState.config.pointsPerHit;
     updateDisplay();
 
@@ -87,7 +91,20 @@ function updateDisplay() {
 }
 
 function startGame() {
-    gameState.moleInterval = setInterval(createMole, gameState.config.moleInterval);
+    const mode = localStorage.getItem('gameMode') || 'normal';
+    const config = Object.values(GAME_MODES).find(config => config.name === mode);
+    
+    if (!config) {
+        console.error('Invalid game mode:', mode);
+        window.location.href = 'index.html';
+        return;
+    }
+
+    resetGameState(config);
+    createBoard();
+    updateDisplay();
+    
+    gameState.moleInterval = setInterval(createMole, config.moleInterval);
     gameState.timerInterval = setInterval(updateTimer, 1000);
 }
 
@@ -130,22 +147,8 @@ function setupEventListeners() {
     }
 }
 
-function initializeGame() {
-    const mode = localStorage.getItem('gameMode') || 'normal';
-    const config = Object.values(GAME_MODES).find(config => config.name === mode);
-    
-    if (!config) {
-        console.error('Invalid game mode:', mode);
-        window.location.href = 'index.html';
-        return;
-    }
-
-    resetGameState(config);
-    createBoard();
-    updateDisplay();
+// Initialize game when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
     startGame();
     setupEventListeners();
-}
-
-// Initialize game when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeGame);
+});
